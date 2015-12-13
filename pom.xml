@@ -5,7 +5,7 @@
   <artifactId>spider</artifactId>
   <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>StartSpring Maven Webapp</name>
+  <name>spider Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <dependencies>
     <dependency>
@@ -50,6 +50,12 @@
 
     <dependency>
       <groupId>org.mybatis</groupId>
+      <artifactId>mybatis</artifactId>
+      <version>3.3.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.mybatis</groupId>
       <artifactId>mybatis-spring</artifactId>
       <version>1.2.3</version>
     </dependency>
@@ -70,6 +76,20 @@
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
       <version>5.1.37</version>
+    </dependency>
+
+    <!-- c3p0-->
+    <dependency>
+      <groupId>com.mchange</groupId>
+      <artifactId>c3p0</artifactId>
+      <version>0.9.5.2</version>
+    </dependency>
+
+    <!-- jdbc-->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-jdbc</artifactId>
+      <version>4.2.3.RELEASE</version>
     </dependency>
 
     <!-- 导入mail-->
@@ -95,11 +115,19 @@
       <version>1.2.17</version>
     </dependency>
 
+
+
     <dependency>
       <groupId>com.prince.util</groupId>
       <artifactId>regUtil</artifactId>
       <version>1.0-SNAPSHOT</version>
     </dependency>
+    <dependency>
+      <groupId>com.prince.util</groupId>
+      <artifactId>httpUtil</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
+
 
 
 
@@ -217,11 +245,6 @@
         </configuration>
 
       </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-archetype-plugin</artifactId>
-          <version>2.2</version>
-        </plugin>
 
     </plugins>
   </build>
