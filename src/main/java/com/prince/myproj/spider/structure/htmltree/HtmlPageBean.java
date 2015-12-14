@@ -1,4 +1,4 @@
-package com.prince.myproj.spider.structure;
+package com.prince.myproj.spider.structure.htmltree;
 
 /**
  * Created by zidong.wang on 2015/12/14.
@@ -6,7 +6,7 @@ package com.prince.myproj.spider.structure;
 public class HtmlPageBean {
 
     private String title;//page title
-    private String allContent;//网页所有内容
+    private String allContent;//网页所有内容 //一般不会用
     private String tag;  //全局唯一标识
     private String pageUrl;//当前页面的url
 

@@ -1,11 +1,12 @@
-package com.prince.myproj.spider.structure;
+package com.prince.myproj.spider.structure.htmltree;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by zidong.wang on 2015/12/14.
  */
-public class HtmlPageTreeNode {
+public abstract class HtmlPageTreeNode {
 
     private HtmlPageBean page;
 
@@ -13,11 +14,30 @@ public class HtmlPageTreeNode {
 
     private List<HtmlPageTreeNode> children;
 
-    public void addChild(HtmlPageTreeNode child){
-
-        children.add(child);
+    public HtmlPageTreeNode(){
+        children = new ArrayList<HtmlPageTreeNode>();
     }
 
+    public void addChild(HtmlPageTreeNode child){
+        children.add(child);
+        child.setParent(this);
+    }
+
+    public void removeChild(HtmlPageTreeNode child){
+        int size = children.size();
+        for(int i=0;i<size;i++){
+            HtmlPageTreeNode childIn = children.get(i);
+            if(childIn==child){
+                children.remove(i);
+                childIn.setParent(null);
+                childIn=null;
+                break;
+            }
+        }
+    }
+
+    //当遍历时执行
+    public abstract void onVisit();
 
 
     public HtmlPageBean getPage() {
