@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Created by zidong.wang on 2015/12/14.
  */
-public class HtmlPageTree {
+public abstract class HtmlPageTree {
     private HtmlPageTreeNode root;
 
 
@@ -23,6 +23,7 @@ public class HtmlPageTree {
         }
     }
 
+    public abstract void createTree();
 
     public HtmlPageTreeNode getRoot() {
         return root;

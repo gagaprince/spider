@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Created by zidong.wang on 2015/12/14.
  */
-public abstract class HtmlPageTreeNode {
+public class HtmlPageTreeNode {
 
     private HtmlPageBean page;
 
@@ -37,7 +37,7 @@ public abstract class HtmlPageTreeNode {
     }
 
     //当遍历时执行
-    public abstract void onVisit();
+    public void onVisit(){};
 
 
     public HtmlPageBean getPage() {
