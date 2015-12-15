@@ -10,10 +10,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta charset="UTF-8">
     <base href="<%=basePath%>">
-    <title>这是一个</title>
+    <title>这是一个爬虫</title>
 </head>
 <body>
-<h2><c:out value="${name}"></c:out>!!!!啊啊啊</h2>
-<h2><c:out value="${aaa}"></c:out>!!!!啊啊啊</h2>
+<h2>小说抓取</h2>
 </body>
 </html>

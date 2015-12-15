@@ -6,13 +6,13 @@ import java.util.List;
 /**
  * Created by zidong.wang on 2015/12/14.
  */
-public class HtmlPageTreeNode {
+public abstract class HtmlPageTreeNode {
 
-    private HtmlPageBean page;
+    protected HtmlPageBean page;
 
-    private HtmlPageTreeNode parent;
+    protected HtmlPageTreeNode parent;
 
-    private List<HtmlPageTreeNode> children;
+    protected List<HtmlPageTreeNode> children;
 
     public HtmlPageTreeNode(){
         children = new ArrayList<HtmlPageTreeNode>();
@@ -37,7 +37,7 @@ public class HtmlPageTreeNode {
     }
 
     //当遍历时执行
-    public void onVisit(){};
+    public abstract void onVisit();
 
 
     public HtmlPageBean getPage() {

@@ -1,14 +1,23 @@
 package com.prince.myproj.spider.structure.htmltree;
 
+import com.prince.util.httputil.HttpUtil;
+
+
 /**
  * Created by zidong.wang on 2015/12/14.
  */
 public class HtmlPageBean {
 
+
+    public HttpUtil httpUtil;
     private String title;//page title
     private String allContent;//网页所有内容 //一般不会用
     private String tag;  //全局唯一标识
     private String pageUrl;//当前页面的url
+
+    public HtmlPageBean(){
+        httpUtil = HttpUtil.getInstance();
+    }
 
     public String getAllContent() {
         return allContent;

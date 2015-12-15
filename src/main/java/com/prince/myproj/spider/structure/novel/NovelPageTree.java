@@ -8,9 +8,11 @@ import com.prince.myproj.spider.structure.htmltree.HtmlPageTree;
 public class NovelPageTree extends HtmlPageTree{
     @Override
     public void createTree() {
-        NovelPageBean npb = new NovelPageBean();
-        npb.setPageUrl("http://www.tooopen.com/img/87.aspx");
+        NovelPageIndexBean npb = new NovelPageIndexBean();
+        npb.setPageUrl("http://www.2000hh.com/");
         NovelPageTreeNode root = new NovelPageTreeNode();
         root.setPage(npb);
+        this.setRoot(root);
     }
+
 }

@@ -22,9 +22,8 @@ public class SpiderCtrlController {
     private SpiderService spiderService;
 
     @RequestMapping("/test")
-    public void test(HttpServletRequest request,HttpServletResponse response, Model model){
-
-
-
+    public String test(HttpServletRequest request,HttpServletResponse response, Model model){
+        spiderService.startSpiderNovel();
+        return "novel";
     }
 }
