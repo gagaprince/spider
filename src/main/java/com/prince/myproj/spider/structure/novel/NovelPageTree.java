@@ -1,6 +1,8 @@
 package com.prince.myproj.spider.structure.novel;
 
 import com.prince.myproj.spider.structure.htmltree.HtmlPageTree;
+import com.prince.myproj.spider.structure.novel.node.NovelPageTreeNode;
+import com.prince.myproj.spider.structure.novel.pagebean.NovelPageIndexBean;
 
 /**
  * Created by zidong.wang on 2015/12/15.
