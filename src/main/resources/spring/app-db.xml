@@ -47,6 +47,7 @@
         <property name="mapperLocations">
             <array>
                 <value>classpath:mapper/*.xml</value>
+                <value>classpath:mapper/novel/*.xml</value>
             </array>
         </property>
     </bean>

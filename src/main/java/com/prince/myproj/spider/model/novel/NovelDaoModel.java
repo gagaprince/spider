@@ -1,4 +1,6 @@
-package com.prince.myproj.spider.structure.novel.pagebean;
+package com.prince.myproj.spider.model.novel;
+
+import java.util.Date;
 
 /**
  * Created by gagaprince on 15-12-16.
@@ -7,6 +9,8 @@ public class NovelDaoModel {
     private String cate;
     private String title;
     private String content;
+    private Date createTime;
+    private String pageUrl;
 
     public void setCate(String cate) {
         this.cate = cate;
