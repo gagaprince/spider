@@ -62,4 +62,8 @@ public class HtmlPageBean {
     public void setRootUrl(String rootUrl) {
         this.rootUrl = rootUrl;
     }
+
+    public void clearPage(){
+        this.setAllContent("");
+    }
 }
