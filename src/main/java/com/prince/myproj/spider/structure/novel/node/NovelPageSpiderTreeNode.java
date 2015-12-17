@@ -45,14 +45,14 @@ public class NovelPageSpiderTreeNode extends NovelPageTreeNode{
     private void analysisNovelModel(final NovelDaoModel novelDaoModel){
         //正则表达取数据 填入novelDaoModel
         NovelPageContentBean contentBean = (NovelPageContentBean)this.getPage();
-        String pattern = "<tbody><tr><td>.+?<br />(.+?)</td>";
+        String pattern = "<tbody><tr><td>(.+?)</td>";
         novelDaoModel.setCate(contentBean.getCate());
         novelDaoModel.setTitle(contentBean.getTitle());
         novelDaoModel.setPageUrl(contentBean.getPageUrl());
         novelDaoModel.setCreateTime(new Date());
         regUtil.getMatchs(contentBean.getAllContent(), pattern, new OnMatch() {
             public void onMatch(Matcher matcher) {
-                novelDaoModel.setContent(matcher.group(1));
+                novelDaoModel.setContent(matcher.group(1).trim());
             }
         });
     }
