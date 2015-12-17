@@ -1,8 +1,8 @@
 package com.prince.myproj.spider.structure.novel.node;
 
 import com.prince.myproj.spider.structure.htmltree.HtmlPageBean;
-import com.prince.myproj.spider.structure.htmltree.HtmlPageTreeNode;
 import com.prince.myproj.spider.structure.novel.pagebean.NovelPageCateBean;
+import com.prince.util.RegUtil.interfaces.OnMatch;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,15 +46,23 @@ public class NovelPageCateTreeNode extends NovelPageTreeNode{
         analysisNextPage(cateBean,nextPage);
     }
 
-    private void analysisPage(NovelPageCateBean cateBean){
+    public void analysisPage(NovelPageCateBean cateBean){
         String url = cateBean.getPageUrl();
+        logger.info("catePageUrl:"+url);
         String content = httpUtil.getContentByUrl(url,"gbk");
         cateBean.setAllContent(content);
     }
 
-    private void analysisSpiderPages(final List<NovelPageCateBean> novelSpiderPages,final NovelPageCateBean cateBean){
+    public void analysisSpiderPages(final List<NovelPageCateBean> novelSpiderPages,final NovelPageCateBean cateBean){
+        String mainPattern = "<ul class=\"textList\">(.+?)</ul>";
+        final String[] mainContents = new String[1];
+        regUtil.getMatchs(cateBean.getAllContent(), mainPattern, new OnMatch() {
+            public void onMatch(Matcher matcher) {
+                mainContents[0] = matcher.group(1);
+            }
+        });
         String pattern = "<li><a href=\"(.+?)\".+?><span>.+?</span>(.+?)</a></li>";
-        regUtil.getMatchs(cateBean.getAllContent(), pattern, new OnMatch() {
+        regUtil.getMatchs(mainContents[0], pattern, new OnMatch() {
             public void onMatch(Matcher matcher) {
                 String title = matcher.group(2);
                 String url = matcher.group(1);
@@ -71,7 +79,7 @@ public class NovelPageCateTreeNode extends NovelPageTreeNode{
         });
     }
 
-    private void analysisNextPage(final NovelPageCateBean cateBean, final NovelPageCateBean nextPage){
+    public void analysisNextPage(final NovelPageCateBean cateBean, final NovelPageCateBean nextPage){
         String pattern = "</strong>.+<a href=\"(.+?)\">下一页</a>.+?<a href=\"(.+?)\">末页</a>";
         regUtil.getMatchs(cateBean.getAllContent(), pattern, new OnMatch() {
             public void onMatch(Matcher matcher) {
@@ -94,12 +102,14 @@ public class NovelPageCateTreeNode extends NovelPageTreeNode{
         int size = novelSpiderPages.size();
         for(int i=0;i<size;i++){
             NovelPageCateBean spiderPage = novelSpiderPages.get(i);
+            logger.info("spider page Url:"+spiderPage.getPageUrl());
             NovelPageSpiderTreeNode spiderTreeNode = new NovelPageSpiderTreeNode(spiderPage);
             this.addChild(spiderTreeNode);
         }
-
-        if (!nextPage.isLastPage()){
+        NovelPageCateBean cateBean = (NovelPageCateBean)this.getPage();
+        if (!cateBean.isLastPage()){
             NovelPageCateTreeNode cateTreeNode = new NovelPageCateTreeNode(nextPage);
+            logger.info("nextPage:"+nextPage.getPageUrl());
             this.addChild(cateTreeNode);
         }
 

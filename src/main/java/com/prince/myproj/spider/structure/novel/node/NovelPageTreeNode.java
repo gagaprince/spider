@@ -2,6 +2,7 @@ package com.prince.myproj.spider.structure.novel.node;
 
 import com.prince.myproj.spider.structure.htmltree.HtmlPageBean;
 import com.prince.myproj.spider.structure.htmltree.HtmlPageTreeNode;
+import com.prince.util.RegUtil.interfaces.OnMatch;
 import org.apache.log4j.Logger;
 
 import java.util.*;
@@ -47,20 +48,21 @@ public class NovelPageTreeNode extends HtmlPageTreeNode {
 
     }
 
-    private void preparedPage(){
+    public void preparedPage(){
         HtmlPageBean indexPage = this.getPage();
         analysisPage(indexPage);
         analysisMap(indexPage, novelIndexMap);
         analysisCateMap(novelIndexCateMap,novelIndexMap,indexPage);
     }
 
-    protected void analysisPage(HtmlPageBean page){
+    public void analysisPage(HtmlPageBean page){
         String url = page.getPageUrl();
+        logger.info("indexPageUrl:"+url);
         String content = httpUtil.getContentByUrl(url, "gbk");
         page.setAllContent(content);
     }
 
-    private void analysisMap(HtmlPageBean page,final Map<String,String> titleMap){
+    public void analysisMap(HtmlPageBean page,final Map<String,String> titleMap){
         String menuPattern = "<ul class=\"menu.+?\">.+?<a href=.+?>(.+?)</a>.+?</ul>";
         String content = page.getAllContent();
         regUtil.getMatchs(content, menuPattern, new OnMatch() {
@@ -74,12 +76,13 @@ public class NovelPageTreeNode extends HtmlPageTreeNode {
         });
     }
 
-    private void analysisCateMap(Map<String,List<HtmlPageBean>> novelIndexCateMap,Map<String,String> novelIndexMap, final HtmlPageBean currentPage){
+    public void analysisCateMap(Map<String,List<HtmlPageBean>> novelIndexCateMap,Map<String,String> novelIndexMap, final HtmlPageBean currentPage){
         Set<String> titles = novelIndexMap.keySet();
         Iterator<String> it = titles.iterator();
         while (it.hasNext()){
             final List<HtmlPageBean> htmlPageList = new ArrayList<HtmlPageBean>();
             String title = it.next();
+            logger.info("bigCate:"+title);
             String titleContent = novelIndexMap.get(title);
             String pattern = "<li><a href=\"(.+?)\">(.+?)</a></li>";
             regUtil.getMatchs(titleContent, pattern, new OnMatch() {
@@ -99,7 +102,7 @@ public class NovelPageTreeNode extends HtmlPageTreeNode {
         }
     }
 
-    private void preparedChildren(){
+    public void preparedChildren(){
         Set<String> titleKeySet = novelIndexCateMap.keySet();
         Iterator<String> it = titleKeySet.iterator();
         while (it.hasNext()){
