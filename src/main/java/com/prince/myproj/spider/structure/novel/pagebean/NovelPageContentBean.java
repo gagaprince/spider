@@ -5,23 +5,14 @@ import com.prince.myproj.spider.structure.htmltree.HtmlPageBean;
 /**
  * Created by gagaprince on 15-12-16.
  */
-public class NovelPageContentBean extends HtmlPageBean {
-    private NovelDaoModel model;
-    private String cate;
+public class NovelPageContentBean extends NovelPageCateBean {
+    private String novelContent;
 
-    public String getCate() {
-        return cate;
+    public String getNovelContent() {
+        return novelContent;
     }
 
-    public void setCate(String cate) {
-        this.cate = cate;
-    }
-
-    public NovelDaoModel getModel() {
-        return model;
-    }
-
-    public void setModel(NovelDaoModel model) {
-        this.model = model;
+    public void setNovelContent(String novelContent) {
+        this.novelContent = novelContent;
     }
 }

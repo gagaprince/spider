@@ -54,7 +54,7 @@ public class NovelPageTreeNode extends HtmlPageTreeNode {
         analysisCateMap(novelIndexCateMap,novelIndexMap,indexPage);
     }
 
-    private void analysisPage(HtmlPageBean page){
+    protected void analysisPage(HtmlPageBean page){
         String url = page.getPageUrl();
         String content = httpUtil.getContentByUrl(url, "gbk");
         page.setAllContent(content);
@@ -99,7 +99,7 @@ public class NovelPageTreeNode extends HtmlPageTreeNode {
         }
     }
 
-    public void preparedChildren(){
+    private void preparedChildren(){
         Set<String> titleKeySet = novelIndexCateMap.keySet();
         Iterator<String> it = titleKeySet.iterator();
         while (it.hasNext()){
