@@ -13,7 +13,7 @@ import java.util.Map;
 public interface IAnalysis {
     public void analysisMap(HtmlPageBean page,Map<String,String> titleMap);
     public void analysisCateMap(Map<String,List<HtmlPageBean>> novelIndexCateMap,Map<String,String> novelIndexMap,HtmlPageBean currentPage);
-    public void analysisNovelModel(NovelDaoModel novelDaoModel);
+    public void analysisNovelModel(NovelDaoModel novelDaoModel,HtmlPageBean contentBean);
     public void analysisSpiderPages(List<NovelPageCateBean> novelSpiderPages,NovelPageCateBean cateBean);
     public void analysisNextPage(final NovelPageCateBean cateBean, final NovelPageCateBean nextPage);
 }

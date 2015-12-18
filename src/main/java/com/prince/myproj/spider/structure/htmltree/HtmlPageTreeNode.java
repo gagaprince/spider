@@ -1,5 +1,6 @@
 package com.prince.myproj.spider.structure.htmltree;
 
+import com.prince.myproj.spider.structure.novel.annlysiser.AnalysisTemlate;
 import com.prince.util.RegUtil.RegUtil;
 import com.prince.util.httputil.HttpUtil;
 
@@ -20,6 +21,8 @@ public abstract class HtmlPageTreeNode {
     public HttpUtil httpUtil;
 
     public RegUtil regUtil;
+
+    public AnalysisTemlate analysiser;
 
     public HtmlPageTreeNode(){
         httpUtil = HttpUtil.getInstance();
@@ -77,5 +80,13 @@ public abstract class HtmlPageTreeNode {
 
     public void setParent(HtmlPageTreeNode parent) {
         this.parent = parent;
+    }
+
+    public AnalysisTemlate getAnalysiser() {
+        return analysiser;
+    }
+
+    public void setAnalysiser(AnalysisTemlate analysiser) {
+        this.analysiser = analysiser;
     }
 }

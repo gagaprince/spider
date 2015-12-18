@@ -42,19 +42,20 @@ public class NovelPageSpiderTreeNode extends NovelPageTreeNode{
         spiderService.addNovel(novelDaoModel);
     }
 
-    private void analysisNovelModel(final NovelDaoModel novelDaoModel){
+    private void analysisNovelModel(NovelDaoModel novelDaoModel){
         //正则表达取数据 填入novelDaoModel
         NovelPageContentBean contentBean = (NovelPageContentBean)this.getPage();
-        String pattern = "<tbody><tr><td>(.+?)</td>";
         novelDaoModel.setCate(contentBean.getCate());
         novelDaoModel.setTitle(contentBean.getTitle());
         novelDaoModel.setPageUrl(contentBean.getPageUrl());
         novelDaoModel.setCreateTime(new Date());
+        /*String pattern = "<tbody><tr><td>(.+?)</td>";
         regUtil.getMatchs(contentBean.getAllContent(), pattern, new OnMatch() {
             public void onMatch(Matcher matcher) {
                 novelDaoModel.setContent(matcher.group(1).trim());
             }
-        });
+        });*/
+        this.getAnalysiser().analysisNovelModel(novelDaoModel,contentBean);
     }
 
     public void print(NovelDaoModel novelDaoModel){

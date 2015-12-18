@@ -2,11 +2,9 @@ package com.prince.myproj.spider.structure.novel.node;
 
 import com.prince.myproj.spider.structure.htmltree.HtmlPageBean;
 import com.prince.myproj.spider.structure.htmltree.HtmlPageTreeNode;
-import com.prince.util.RegUtil.interfaces.OnMatch;
 import org.apache.log4j.Logger;
 
 import java.util.*;
-import java.util.regex.Matcher;
 
 /**
  * Created by zidong.wang on 2015/12/15.
@@ -24,11 +22,6 @@ public class NovelPageTreeNode extends HtmlPageTreeNode {
         //初始化目录map结构
         this.novelIndexMap = new HashMap<String, String>();
         this.novelIndexCateMap = new HashMap<String, List<HtmlPageBean>>();
-        //初始化一个pagebean
-        HtmlPageBean pageBean = new HtmlPageBean();
-        pageBean.setPageUrl("http://www.2000hh.com/");
-        pageBean.setRootUrl(pageBean.getPageUrl());
-        this.setPage(pageBean);
     }
 
     @Override
@@ -62,8 +55,8 @@ public class NovelPageTreeNode extends HtmlPageTreeNode {
         page.setAllContent(content);
     }
 
-    public void analysisMap(HtmlPageBean page,final Map<String,String> titleMap){
-        String menuPattern = "<ul class=\"menu.+?\">.+?<a href=.+?>(.+?)</a>.+?</ul>";
+    public void analysisMap(HtmlPageBean page,Map<String,String> titleMap){
+        /*String menuPattern = "<ul class=\"menu.+?\">.+?<a href=.+?>(.+?)</a>.+?</ul>";
         String content = page.getAllContent();
         regUtil.getMatchs(content, menuPattern, new OnMatch() {
             public void onMatch(Matcher matcher) {
@@ -73,11 +66,12 @@ public class NovelPageTreeNode extends HtmlPageTreeNode {
 //                logger.info(key);
 //                logger.info(matchContent);
             }
-        });
+        });*/
+        this.getAnalysiser().analysisMap(page,titleMap);
     }
 
-    public void analysisCateMap(Map<String,List<HtmlPageBean>> novelIndexCateMap,Map<String,String> novelIndexMap, final HtmlPageBean currentPage){
-        Set<String> titles = novelIndexMap.keySet();
+    public void analysisCateMap(Map<String,List<HtmlPageBean>> novelIndexCateMap,Map<String,String> novelIndexMap, HtmlPageBean currentPage){
+        /*Set<String> titles = novelIndexMap.keySet();
         Iterator<String> it = titles.iterator();
         while (it.hasNext()){
             final List<HtmlPageBean> htmlPageList = new ArrayList<HtmlPageBean>();
@@ -99,7 +93,8 @@ public class NovelPageTreeNode extends HtmlPageTreeNode {
                 }
             });
             novelIndexCateMap.put(title,htmlPageList);
-        }
+        }*/
+        this.getAnalysiser().analysisCateMap(novelIndexCateMap,novelIndexMap,currentPage);
     }
 
     public void preparedChildren(){

@@ -53,8 +53,8 @@ public class NovelPageCateTreeNode extends NovelPageTreeNode{
         cateBean.setAllContent(content);
     }
 
-    public void analysisSpiderPages(final List<NovelPageCateBean> novelSpiderPages,final NovelPageCateBean cateBean){
-        String mainPattern = "<ul class=\"textList\">(.+?)</ul>";
+    public void analysisSpiderPages(List<NovelPageCateBean> novelSpiderPages,NovelPageCateBean cateBean){
+        /*String mainPattern = "<ul class=\"textList\">(.+?)</ul>";
         final String[] mainContents = new String[1];
         regUtil.getMatchs(cateBean.getAllContent(), mainPattern, new OnMatch() {
             public void onMatch(Matcher matcher) {
@@ -76,11 +76,12 @@ public class NovelPageCateTreeNode extends NovelPageTreeNode{
                 page.setTitle(title);
                 novelSpiderPages.add(page);
             }
-        });
+        });*/
+        this.getAnalysiser().analysisSpiderPages(novelSpiderPages,cateBean);
     }
 
-    public void analysisNextPage(final NovelPageCateBean cateBean, final NovelPageCateBean nextPage){
-        String pattern = "</strong>.+<a href=\"(.+?)\">下一页</a>.+?<a href=\"(.+?)\">末页</a>";
+    public void analysisNextPage(NovelPageCateBean cateBean,NovelPageCateBean nextPage){
+        /*String pattern = "</strong>.+<a href=\"(.+?)\">下一页</a>.+?<a href=\"(.+?)\">末页</a>";
         regUtil.getMatchs(cateBean.getAllContent(), pattern, new OnMatch() {
             public void onMatch(Matcher matcher) {
                 String nextUrl = matcher.group(1);
@@ -95,7 +96,8 @@ public class NovelPageCateTreeNode extends NovelPageTreeNode{
                 nextPage.setTitle(cateBean.getTitle());
                 cateBean.setIsLastPage(cateBean.getPageUrl().contains(lastUrl));
             }
-        });
+        });*/
+        this.getAnalysiser().analysisNextPage(cateBean,nextPage);
     }
 
     public void preparedChildren(){

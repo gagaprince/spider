@@ -12,6 +12,7 @@ import java.util.Map;
  * Created by zidong.wang on 2015/12/18.
  */
 public class AnalysisTemlate implements IAnalysis{
+
     public void analysisMap(HtmlPageBean page, Map<String, String> titleMap) {
 
     }
@@ -20,7 +21,7 @@ public class AnalysisTemlate implements IAnalysis{
 
     }
 
-    public void analysisNovelModel(NovelDaoModel novelDaoModel) {
+    public void analysisNovelModel(NovelDaoModel novelDaoModel,HtmlPageBean contentBean) {
 
     }
 
@@ -32,3 +33,4 @@ public class AnalysisTemlate implements IAnalysis{
 
     }
 }
+
