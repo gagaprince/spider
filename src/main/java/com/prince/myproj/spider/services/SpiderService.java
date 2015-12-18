@@ -15,10 +15,11 @@ public class SpiderService {
     public static final Logger logger = Logger.getLogger(SpiderService.class);
     @Autowired
     public NovelDao novelDao;
+    @Autowired
+    public NovelPageTree novelPageTree;
 
     public void startSpiderNovel(){
         logger.info("开始抓取小说");
-        NovelPageTree novelPageTree = new NovelPageTree();
         novelPageTree.createTree();
         novelPageTree.inorderTraversal();
         logger.info("小说抓取完毕");
