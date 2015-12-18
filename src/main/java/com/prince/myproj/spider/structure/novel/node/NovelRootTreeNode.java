@@ -5,7 +5,7 @@ import com.prince.myproj.spider.structure.htmltree.HtmlPageTreeNode;
 /**
  * Created by zidong.wang on 2015/12/18.
  */
-public class RootTreeNode  extends HtmlPageTreeNode{
+public class NovelRootTreeNode extends HtmlPageTreeNode{
     @Override
     public void onVisit() {
 

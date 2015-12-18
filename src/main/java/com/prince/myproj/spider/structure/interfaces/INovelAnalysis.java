@@ -10,7 +10,7 @@ import java.util.Map;
 /**
  * Created by zidong.wang on 2015/12/18.
  */
-public interface IAnalysis {
+public interface INovelAnalysis {
     public void analysisMap(HtmlPageBean page,Map<String,String> titleMap);
     public void analysisCateMap(Map<String,List<HtmlPageBean>> novelIndexCateMap,Map<String,String> novelIndexMap,HtmlPageBean currentPage);
     public void analysisNovelModel(NovelDaoModel novelDaoModel,HtmlPageBean contentBean);
